@@ -1,0 +1,17 @@
+.profileLayout {
+  width: 100%;
+  background-color: #f8f8f8;
+  &__container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    min-height: 91vh;
+    padding-top: 8rem;
+  }
+  &__nav {
+  }
+  &__body {
+  }
+}

@@ -1,0 +1,66 @@
+.addMenuAdd {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba($color: #000000, $alpha: 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__image {
+    margin-bottom: 2rem;
+    &-icon {
+      font-size: 8rem;
+      color: #666565;
+    }
+  }
+  &__box {
+    width: 50%;
+    background: #fff;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    margin: 0rem 0;
+    height: 90vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    &-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      h2 {
+        font-size: 2rem;
+      }
+      .icon {
+        font-size: 2.5rem;
+        cursor: pointer;
+      }
+    }
+    button {
+      padding: 0.8rem;
+      width: 100%;
+      background: #537fe7;
+      border-radius: 0.5rem;
+      border: 1px solid #537fe7;
+      color: #fff;
+    }
+  }
+  &__inputBox {
+    display: grid;
+    margin-bottom: 1rem;
+    label {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 0.5rem;
+    }
+  }
+}

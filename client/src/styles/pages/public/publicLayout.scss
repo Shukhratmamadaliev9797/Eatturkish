@@ -1,0 +1,13 @@
+.public {
+  width: 100%;
+  min-height: 100vh;
+  &__navbar {
+    // margin-bottom: 10rem;
+  }
+  &__body {
+    position: absolute;
+    left: 0;
+    top: 8rem;
+    width: 100%;
+  }
+}

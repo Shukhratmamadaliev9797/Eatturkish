@@ -1,0 +1,80 @@
+.popularDishes {
+  width: 100%;
+  background-color: #f8f8f8;
+  &__container {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    padding: 10rem 1rem 13rem;
+  }
+  &__swiper {
+    width: 100%;
+    height: 100%;
+  }
+  &__title {
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span {
+      color: #bb2339;
+      font-size: 4rem;
+    }
+  }
+  &__swiperNavigation {
+    display: flex;
+    &-button {
+      border: 1px solid #ddd;
+      margin-left: 1.5rem;
+      font-size: 2.5rem;
+      padding: 0 1rem;
+      border-radius: 0.5rem;
+    }
+    &-active {
+      color: #bb2339;
+      border: 1px solid #bb2339;
+    }
+  }
+  &__slide {
+    width: 100%;
+    text-align: center;
+    border-radius: 1rem;
+    font-size: 18px;
+    background: #fff;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 1rem;
+    height: 38rem !important;
+    img {
+      width: 80%;
+      height: 20rem;
+      object-fit: contain;
+      margin-bottom: 2rem;
+    }
+    h4 {
+      margin-bottom: 2rem;
+    }
+    &-star {
+      margin-bottom: 2rem;
+      &:not(&:last-child) {
+        color: #ffea28;
+      }
+    }
+    span {
+      color: #bb2339;
+      font-weight: bold;
+    }
+  }
+  &__cart {
+    position: absolute;
+    font-size: 4rem;
+    color: #fff;
+    background: #bb2339;
+    padding: 1.5rem 2.5rem;
+    border-radius: 50%;
+    right: 0;
+    bottom: -4rem;
+  }
+}

@@ -1,0 +1,54 @@
+.navbar {
+  position: fixed;
+  width: 100%;
+  background: #bb2339;
+  z-index: 1000;
+  &__container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+  }
+  &__logo {
+    font-size: 2rem;
+
+    a {
+      color: #fff;
+    }
+  }
+  &__menu {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 45%;
+    margin: 0 !important;
+    font-size: 1.5rem;
+    li {
+      a {
+        color: #fff;
+      }
+      w m button {
+        padding: 1rem 3rem;
+        border: 1px solid #fff;
+        background: transparent;
+        color: #fff;
+        border-radius: 3rem;
+      }
+    }
+  }
+  &__profileLink {
+    padding: 1.1rem 2rem 1.1rem 0rem;
+    background: rgba($color: #fff, $alpha: 0.2);
+    border-radius: 2rem;
+
+    .fa-user {
+      background: #fff;
+      color: #ddd;
+      border-radius: 2rem;
+      padding: 1.1rem;
+    }
+  }
+}

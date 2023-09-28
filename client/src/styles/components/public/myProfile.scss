@@ -1,0 +1,66 @@
+.myProfile {
+  width: 90%;
+  min-height: 85%;
+  background: #fff;
+  border-radius: 2rem;
+  padding: 5rem;
+  &__title {
+    margin-bottom: 4rem;
+    h2 {
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.1rem;
+      &:first-child {
+        color: #c2bdbd;
+      }
+    }
+  }
+  &__inputBox2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 2rem;
+    grid-gap: 2rem;
+    div {
+      display: grid;
+    }
+    input {
+      border: 1px solid #ddd;
+      padding: 1.5rem;
+      font-size: 1.3rem;
+      border-radius: 1rem;
+    }
+    label {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #9a9898;
+    }
+  }
+  &__inputBox1 {
+    display: grid;
+    input {
+      border: 1px solid #ddd;
+      padding: 1.5rem;
+      font-size: 1.3rem;
+      border-radius: 1rem;
+    }
+    label {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #9a9898;
+    }
+  }
+  &__button {
+    margin-top: 2rem;
+    text-align: right;
+    button {
+      font-size: 1.3rem;
+      border-radius: 2rem;
+      padding: 1rem 2.5rem;
+      border: 1px solid #bb2339;
+      background-color: transparent;
+    }
+  }
+  &__successUpdate {
+    border: 1px solid green !important;
+    color: green;
+  }
+}

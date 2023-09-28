@@ -1,0 +1,17 @@
+.videoHome {
+  width: 100%;
+  height: 20vh;
+  &__player {
+    width: 100%;
+    height: 10vh;
+  }
+}
+
+.video__layer {
+  color: #bb2339 !important;
+  border: 1px solid #bb2339 !important;
+}
+
+.video-react {
+  background-color: #fff !important;
+}

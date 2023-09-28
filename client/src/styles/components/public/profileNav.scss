@@ -1,0 +1,29 @@
+.profileNav {
+  width: 80%;
+  height: 85%;
+  background: #bb2339;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 2rem;
+  padding: 2rem 3rem;
+  &__menu {
+    li {
+      margin: 4rem 0;
+      a {
+        color: #fff;
+        font-size: 2rem;
+        span {
+          margin-left: 2rem;
+          letter-spacing: 0.2rem;
+        }
+      }
+    }
+  }
+  &__logout {
+    font-size: 2.2rem;
+    color: #e4cbcb;
+    padding-left: 2rem;
+    padding-bottom: 1rem;
+  }
+}

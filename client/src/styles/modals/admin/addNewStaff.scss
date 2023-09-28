@@ -1,0 +1,77 @@
+.addNewStaff {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba($color: #000000, $alpha: 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__box {
+    width: 40%;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    &-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      h2 {
+        font-size: 2rem;
+      }
+      .icon {
+        font-size: 2.5rem;
+        cursor: pointer;
+      }
+    }
+    button {
+      padding: 0.8rem;
+      width: 100%;
+      background: #537fe7;
+      border-radius: 0.5rem;
+      border: 1px solid #537fe7;
+      color: #fff;
+    }
+  }
+  &__inputBox1 {
+    display: grid;
+    margin-bottom: 1rem;
+    label {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 0.5rem;
+    }
+  }
+  &__inputBox2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 2rem;
+    margin-bottom: 1rem;
+    label {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    input {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 0.5rem;
+    }
+    select {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 0.5rem;
+    }
+  }
+}

@@ -1,0 +1,78 @@
+.homeHeader {
+  width: 100%;
+  background: #bb2339;
+  height: 85vh;
+  position: relative;
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    color: #fff;
+    width: 80%;
+    height: 80%;
+    margin: 0 auto;
+    padding: 2rem;
+    grid-gap: 4rem;
+  }
+  &__text {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-content: center;
+    span {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 10rem;
+    }
+    p {
+      font-size: 1.3rem;
+      width: 80%;
+      color: #d6d4d4;
+      margin: 2rem 0;
+    }
+    button {
+      padding: 1.5rem 4rem;
+      border: 1px solid #fff;
+      background: transparent;
+      color: #fff;
+      border-radius: 3rem;
+      margin-top: 2rem;
+      font-size: 1.5rem;
+    }
+  }
+  &__img {
+    width: 100%;
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    &-scroll {
+      position: absolute;
+      right: 12rem;
+      bottom: 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      &-stick {
+        background: rgb(255, 255, 255);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(166, 96, 96, 1) 89%,
+          rgba(196, 25, 25, 1) 100%
+        );
+        width: 1px;
+        height: 6rem;
+        margin-bottom: 1.5rem;
+      }
+      span {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
