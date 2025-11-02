@@ -51,6 +51,11 @@ export default function AdminLogin() {
       />
       {/* {loading && <AdminLoader text="Checking Details..." />} */}
       <div className="login__container">
+        <div className="login__container-adminDetails">
+          <h3>Admin login</h3>
+          <p>Email: admin@gmail.com</p>
+          <p>Password: 1111</p>
+        </div>
         <form className="login__form" onSubmit={submitHandler}>
           <h3>Sign in</h3>
           <div className="login__form-inputBox">

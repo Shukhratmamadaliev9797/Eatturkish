@@ -17,6 +17,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    &-adminDetails {
+      background-color: #ffff;
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      margin-bottom: 2rem;
+    }
   }
   &__form {
     width: 30%;
