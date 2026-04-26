@@ -1,48 +1,82 @@
 import multer from "multer";
 import express from "express";
 import { isAuth } from "../utils.js";
-import multerS3 from "multer-s3";
-import aws from "aws-sdk";
 import dotenv from "dotenv";
+import cloudinary from "cloudinary";
 
 const uploadRouter = express.Router();
 dotenv.config();
 
-const storage = multer.diskStorage({
-  destination(req, file, cb) {
-    cb(null, "uploads/");
-  },
-  filename(req, file, cb) {
-    cb(null, `${Date.now()}.jpg`);
-  },
+cloudinary.v2.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET,
 });
 
-const upload = multer({ storage });
-
-uploadRouter.post("/", isAuth, upload.single("image"), (req, res) => {
-  res.send(`/${req.file.path}`);
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 10 * 1024 * 1024 },
 });
 
-const s3 = new aws.S3({
-  region: process.env.AWS_REGION,
-  accessKeyId: process.env.AWS_ACCESS_KEY,
-  secretAccessKey: process.env.AWS_SECRET_KEY,
-  AWS_SDK_LOAD_CONFIG: process.env.AWS_CONFIG,
+const sanitizeFolderPart = (value = "") =>
+  value
+    .toString()
+    .trim()
+    .replace(/[^a-zA-Z0-9/_-]/g, "")
+    .replace(/\/{2,}/g, "/")
+    .replace(/^\/|\/$/g, "");
+
+const buildFolderPath = (customFolder = "") => {
+  const now = new Date();
+  const year = String(now.getUTCFullYear());
+  const month = String(now.getUTCMonth() + 1).padStart(2, "0");
+  const baseFolder = sanitizeFolderPart(process.env.CLOUDINARY_FOLDER || "eatturkish");
+  const scopedFolder = sanitizeFolderPart(customFolder || "general");
+  return `${baseFolder}/${scopedFolder}/${year}/${month}`;
+};
+
+const uploadToCloudinary = (fileBuffer, folder) =>
+  new Promise((resolve, reject) => {
+    const stream = cloudinary.v2.uploader.upload_stream(
+      {
+        folder,
+        resource_type: "image",
+      },
+      (error, result) => {
+        if (error) return reject(error);
+        return resolve(result);
+      }
+    );
+    stream.end(fileBuffer);
+  });
+
+uploadRouter.post("/", isAuth, upload.single("image"), async (req, res, next) => {
+  try {
+    if (!req.file) {
+      return res.status(400).send({ message: "No image file uploaded." });
+    }
+
+    const folder = buildFolderPath(req.body?.folder);
+    const result = await uploadToCloudinary(req.file.buffer, folder);
+    return res.send(result.secure_url);
+  } catch (error) {
+    return next(error);
+  }
 });
 
-const storageS3 = multerS3({
-  s3,
-  bucket: process.env.AWS_BUCKET_NAME,
-  acl: "public-read",
-  contentType: multerS3.AUTO_CONTENT_TYPE,
-  key(req, file, cb) {
-    cb(null, file.originalname);
-  },
-});
+// Backward compatibility for old frontend path.
+uploadRouter.post("/s3", isAuth, upload.single("image"), async (req, res, next) => {
+  try {
+    if (!req.file) {
+      return res.status(400).send({ message: "No image file uploaded." });
+    }
 
-const uploadS3 = multer({ storage: storageS3 });
-uploadRouter.post("/s3", uploadS3.single("image"), (req, res) => {
-  res.send(req.file.location);
+    const folder = buildFolderPath(req.body?.folder);
+    const result = await uploadToCloudinary(req.file.buffer, folder);
+    return res.send(result.secure_url);
+  } catch (error) {
+    return next(error);
+  }
 });
 
 export default uploadRouter;

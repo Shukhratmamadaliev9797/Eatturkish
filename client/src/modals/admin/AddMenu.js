@@ -22,9 +22,10 @@ export default function AddMenu({ closeModal }) {
     const file = e.target.files[0];
     const bodyFormData = new FormData();
     bodyFormData.append("image", file);
+    bodyFormData.append("folder", "menus");
     setLoadingUpload(true);
     try {
-      const { data } = await axios.post("/api/uploads/s3", bodyFormData, {
+      const { data } = await axios.post("/api/uploads", bodyFormData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${staffInfo.token}`,

@@ -8,7 +8,7 @@ import staffRouter from "./routers/staffRouter.js";
 import menuRouter from "./routers/menuRouter.js";
 import uploadRouter from "./routers/uploadRouter.js";
 
-dotenv.config({ path: path.resolve("../.env") });
+dotenv.config({ path: path.resolve(".env") });
 
 //initiate express
 const app = express();
@@ -20,7 +20,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //enabled access from different servers
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN || true,
+    credentials: true,
+  })
+);
 
 //Connect mongodb
 mongoose.connect(
